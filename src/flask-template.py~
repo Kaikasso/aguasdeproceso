@@ -1,0 +1,13 @@
+from flask import Flask, render_template
+app = Flask(__name__)
+import datetime
+
+@app.route("/")
+def hello():
+     now = datetime.datetime.now()
+     timeString = now.strftime("%Y-%m-%d %H:%M")
+     templateData = {
+             'title': 'Aguas de Proceso.com: Datalink',
+             'time': timeString
+             }
+     return render_template('main.html', **templateData)
